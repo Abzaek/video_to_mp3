@@ -1,0 +1,54 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.eggs/
+dist/
+sdist/
+*.egg-info/
+*.egg
+*.whl
+*.zip
+lib/
+build/
+develop-eggs/
+parts/
+bin/
+sbin/
+downloads/
+var/
+wheels/
+pip-log.txt
+pip-delete-this.txt
+
+# Environments
+.venv/
+venv/
+env/
+ENV/
+*.env
+
+# PyInstaller
+#  Usually these files are written into a dist directory.
+#  See https://github.com/pyinstaller/pyinstaller/blob/stable/cookbook/spec-file/README.rst
+/_MEI*
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Flask
+instance/
+.webassets-cache
