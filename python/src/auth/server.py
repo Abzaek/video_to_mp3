@@ -21,7 +21,7 @@ def login():
         return 'missing credentials', 401
 
     cur = mysql.connection.cursor()
-    res = cur.execute('SELECT email, password FROM users WHERE email = %s', auth.username)
+    res = cur.execute('SELECT email, password FROM users WHERE email = %s', (auth.username,))
 
     if res > 0:
         user = cur.fetchone()

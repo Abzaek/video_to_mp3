@@ -1,4 +1,4 @@
-'localhost' IDENTIFIED BY 'auth_password';
+CREATE USER 'auth_user'@'localhost' IDENTIFIED BY 'auth_password';
 
 CREATE DATABASE auth;
 
