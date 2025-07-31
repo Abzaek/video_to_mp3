@@ -5,13 +5,16 @@ def upload(file, grid_fs, channel, access):
         # Store the file in GridFS
         file_id = grid_fs.put(file, filename=file.filename)
     except Exception as e:
+        print(f"Error storing file in GridFS: {e}")
         return 'Internal server error', 500
     
+    print(f"File stored in GridFS with ID: {file_id} for user: {access}")
+
     try:
         # prepare the message to be sent to RabbitMQ
         message = {
-            'file_id': str(file_id),
-            'mp3_file_id': None, # Placeholder for mp3 file ID
+            'video_fid': str(file_id),
+            'mp3_fid': None, # Placeholder for mp3 file ID
             'filename': file.filename,
             'user_name': access['username']
         }
@@ -27,6 +30,7 @@ def upload(file, grid_fs, channel, access):
             )
         )
     except Exception as e:
+        print(f"Error publishing message to RabbitMQ: {e}")
         grid_fs.delete(file_id)  # Clean up the file if RabbitMQ fails
         return 'Internal server error', 500
 

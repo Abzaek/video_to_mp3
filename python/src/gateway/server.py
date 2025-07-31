@@ -41,6 +41,7 @@ def upload():
 
         if err:
             return err
+    return "file uploaded successfully", 200
     
 @server.route('/download', methods=['GET'])
 def download():

@@ -50,7 +50,7 @@ def createJWT(username, secret, auths):
     payload = {
         'exp': datetime.datetime.now(tz=datetime.timezone.utc) + datetime.timedelta(days=1),
         'iat': datetime.datetime.now(tz=datetime.timezone.utc),
-        'sub': username,
+        'username': username,
         'admin': auths
     }
     return jwt.encode(payload, secret, algorithm='HS256')
