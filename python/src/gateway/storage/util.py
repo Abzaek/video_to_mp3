@@ -20,7 +20,7 @@ def upload(file, grid_fs, channel, access):
 
         channel.basic_publish(
             exchange='',
-            routing_key='video_upload',
+            routing_key='video',
             body=message_json,
             properties=pika.BasicProperties(
                 delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE
