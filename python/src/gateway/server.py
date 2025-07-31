@@ -10,7 +10,7 @@ server.config['MONGO_URI'] = "mongodb://host.minikube.internal:27017/videos"
 mongo = PyMongo(server)
 grid_fs = gridfs.GridFS(mongo.db)
 
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='placeholder_rabbitmqhost'))
+connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq', port=5672))
 channel = connection.channel()
 @server.route('/login', methods=['POST'])
 def login():
@@ -39,9 +39,12 @@ def upload():
     for _, f in request.files.items():
         err = util.upload(f, grid_fs, channel, access)
 
-@server.route('download', methods=['GET'])
+        if err:
+            return err
+    
+@server.route('/download', methods=['GET'])
 def download():
     pass
 
 if __name__ == '__main__':
-    server.run(host='0.0.0.0', port=5000)
+    server.run(host='0.0.0.0', port=8080)
