@@ -6,8 +6,7 @@ A distributed, cloud-native microservices project that allows users to upload vi
 
 ## 🗺️ Architecture Overview
 
-![Architecture Diagram](<img width="1703" height="849" alt="Screenshot 2025-07-28 at 4 36 49 pm" src="https://github.com/user-attachments/assets/00b509d0-7ba5-434e-ae1d-bb17f99b1af0" />
-)
+<img width="1703" height="849" alt="Screenshot 2025-07-28 at 4 36 49 pm" src="https://github.com/user-attachments/assets/5c61e54e-a599-41cf-872c-e2505bb63139" />
 
 > All services run in a Kubernetes cluster and communicate via RabbitMQ and REST APIs.
 
