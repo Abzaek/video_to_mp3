@@ -73,6 +73,7 @@ def download():
     try:        
         file = fs_mp3.get(ObjectId(file_id))
     except Exception as e:
+        logging.error(f"Error retrieving file from GridFS: {e}")
         return "failed to retrieve file", 400
 
 

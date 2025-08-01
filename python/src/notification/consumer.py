@@ -1,4 +1,4 @@
-import pika, sys, os
+import pika, sys, os, logging
 from send import email
 
 def main():
@@ -17,7 +17,7 @@ def main():
         queue=os.environ.get("MP3_QUEUE"), on_message_callback=callback
     )
 
-    print("Waiting for messages. To exit press CTRL+C")
+    logging.info("Waiting for messages. To exit press CTRL+C")
 
     channel.start_consuming()
 
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("Interrupted")
+        logging.info("Interrupted")
         try:
             sys.exit(0)
         except SystemExit:

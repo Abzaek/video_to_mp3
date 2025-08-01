@@ -1,14 +1,14 @@
-import pika, json
+import pika, json, logging
 
 def upload(file, grid_fs, channel, access):
     try:
         # Store the file in GridFS
         file_id = grid_fs.put(file, filename=file.filename)
     except Exception as e:
-        print(f"Error storing file in GridFS: {e}")
+        logging.error(f"Error storing file in GridFS: {e}")
         return 'Internal server error', 500
     
-    print(f"File stored in GridFS with ID: {file_id} for user: {access}")
+    logging.info(f"File stored in GridFS with ID: {file_id} for user: {access}")
 
     try:
         # prepare the message to be sent to RabbitMQ
@@ -30,7 +30,7 @@ def upload(file, grid_fs, channel, access):
             )
         )
     except Exception as e:
-        print(f"Error publishing message to RabbitMQ: {e}")
+        logging.error(f"Error publishing message to RabbitMQ: {e}")
         grid_fs.delete(file_id)  # Clean up the file if RabbitMQ fails
         return 'Internal server error', 500
 

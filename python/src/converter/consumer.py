@@ -1,4 +1,4 @@
-import pika, sys, os, time
+import pika, sys, os, time, logging
 from pymongo import MongoClient
 import gridfs
 from convert import to_mp3
@@ -27,7 +27,7 @@ def main():
         queue=os.environ.get("VIDEO_QUEUE"), on_message_callback=callback
     )
 
-    print("Waiting for messages. To exit press CTRL+C")
+    logging.info("Waiting for messages. To exit press CTRL+C")
 
     channel.start_consuming()
 
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("Interrupted")
+        logging.info("Interrupted")
         try:
             sys.exit(0)
         except SystemExit:

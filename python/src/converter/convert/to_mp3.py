@@ -43,6 +43,6 @@ def start(message, fs_videos, fs_mp3s, channel):
             ),
         )
     except Exception as err:
-        print(f"Error publishing message to RabbitMQ: {err}")
+        logging.error(f"Error publishing message to RabbitMQ: {err}")
         fs_mp3s.delete(fid)
         return "failed to publish message"
