@@ -94,7 +94,7 @@ A distributed, cloud-native microservices project that allows users to upload vi
 
 ```bash
 git clone https://github.com/Abzaek/video_to_mp3.git
-cd <repo-name>
+cd video_to_mp3
 
 # Start Minikube
 minikube start
