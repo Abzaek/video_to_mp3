@@ -99,7 +99,8 @@ cd video_to_mp3
 minikube start
 
 # Deploy all services
-kubectl apply -f k8s/
+cd <service-name>
+kubectl apply -f manifests/
 
 # Monitor pods
 k9s
